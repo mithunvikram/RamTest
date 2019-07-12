@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ramtest-app
+  namespace: ramtest
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ramtest-app
+    spec:
+      containers:
+        - name: node-container
+          imagePullPolicy: Always
+          image: tharanirajan/ramtest-app:2.0
+          ports:
+            - name: http-port
+              containerPort: 3000
+          env:
+            - name: ramtest-app-db
+              value: ramtest-app-db
+            - name: VAULT_API
+              value: "http://vault.ramtest.svc.cluster.local:8200"  

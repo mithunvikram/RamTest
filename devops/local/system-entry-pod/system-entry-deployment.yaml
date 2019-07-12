@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ramtest-system-entry
+  namespace: ramtest
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ramtest-system-entry
+    spec:
+      containers:
+        - name: nginx-container
+          imagePullPolicy: IfNotPresent
+          image: tharanirajan/ramtest-system-entry:1.0
+          ports:
+            - name: http-port
+              containerPort: 80

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+ labels:
+   name: ramtest-app-db
+ name: ramtest-app-db
+ namespace: ramtest
+spec:
+ type: NodePort
+ ports:
+ - name: mongo-db
+   port: 27017
+   targetPort: 27017
+ selector:
+   name: ramtest-app-db

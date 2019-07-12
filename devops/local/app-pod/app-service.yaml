@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ramtest-app
+  namespace: ramtest
+spec:
+  type: NodePort
+  ports:
+  - name: node-app
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: ramtest-app
